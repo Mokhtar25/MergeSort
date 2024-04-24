@@ -11,14 +11,13 @@ newa = [...newa];
 console.log("array");
 function Sort(arrays) {
   const len = arrays.length;
+
   if (len === 1) return arrays;
   else {
     const half = Math.floor(len / 2);
 
-    const rightk = arrays.slice(half);
-    const leftk = arrays.slice(0, half);
-    const right = Sort(rightk);
-    const array = Sort(leftk);
+    const right = Sort(arrays.slice(half));
+    const array = Sort(arrays.slice(0, half));
 
     const list = [];
     let i = 0,
@@ -26,21 +25,21 @@ function Sort(arrays) {
       k = 0;
     while (i < right.length && j < array.length) {
       if (right[i] < array[j]) {
-        list[k] = right[i];
-        i++, k++;
+        list[k++] = right[i++];
+        // i++, k++;
       } else {
-        list[k] = array[j];
-        j++, k++;
+        list[k++] = array[j++];
+        // j++, k++;
       }
     }
     for (i; i < right.length; i++) {
-      list[k] = right[i];
-      k++;
+      list[k++] = right[i];
+      // k++;
     }
 
     for (j; j < array.length; j++) {
-      list[k] = array[j];
-      k++;
+      list[k++] = array[j];
+      // k++;
     }
     return list;
   }
