@@ -1,15 +1,24 @@
 const array = [1, 2, 5, 6, 2, 12, 5, 23, 43];
 
+let newa = new Set();
+for (let i = 0; i < 10000; i++) {
+  let num = Math.floor(i * Math.random(1, 230120));
+  newa.add(num);
+}
+
+newa = [...newa];
+
+console.log("array");
 function Sort(arrays) {
   const len = arrays.length;
   if (len === 1) return arrays;
   else {
-    const half = Math.round(len / 2);
+    const half = Math.floor(len / 2);
 
-    const rightk = arrays.splice(half, half);
-    arrays.splice(half, half);
+    const rightk = arrays.slice(half);
+    const leftk = arrays.slice(0, half);
     const right = Sort(rightk);
-    const array = Sort(arrays);
+    const array = Sort(leftk);
 
     const list = [];
     let i = 0,
@@ -37,4 +46,4 @@ function Sort(arrays) {
   }
 }
 
-console.log(Sort(array));
+console.log(Sort(newa));
